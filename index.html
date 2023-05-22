@@ -18,7 +18,7 @@
             <option value="cat">Gato</option>
             <option value="dog">Perro</option>
         </select>
-        <button id="get-cat" style="margin-top: 1rem;">Nuevo Gato</button>
+        <button id="get-cat" style="margin-top: 1rem;">Nueva Mascota</button>
     </div>
 
     <script>
@@ -53,21 +53,21 @@
             
         } )
 
-        async function getPetfromApi(pet) {
-
-            // Call the API using the fetch method.
+        function getPetfromApi(pet) {
 
             const url = `https://api.the${pet}api.com/v1/images/search`
 
-            const response = await fetch(url)
-
-            const data = await response.json()
-
-            // Show the result of the API
-            //console.log(data)
-            return data
+            // Call the API using the fetch method.
+            const petData = fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                return data
+            })
+            
+            return petData
 
         }
+        
 
         function updateDOM(image, height, width) {
             // Changing the image, height and width
